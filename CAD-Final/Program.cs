@@ -1,10 +1,12 @@
 ﻿Console.WriteLine("----!WELCOME TO EVANS LOAN CALCULATOR!----");
 
+var carPrice = getPriceOfVehicle();
+var downPayment = getDownPayment();
 var loanAmount = getLoanAmount();
 var annualInterestRate = getAnnualInterestRate();
 var numMonths = getNumberOfMonths();
 
-Console.WriteLine($"Loan Amonut {loanAmount}, Annual Interest Rate {annualInterestRate}, Number of months {numMonths}");
+Console.WriteLine($"Price of vehicle {carPrice}, Down Payment {downPayment}, Loan Amonut {loanAmount}, Annual Interest Rate {annualInterestRate}, Number of months {numMonths}");
 
 static double getLoanAmount()
 {
@@ -63,7 +65,7 @@ static double getAnnualInterestRate()
         getAnnualInterestRate();
     }
 
-    throw new Exception("Error in getting loan Amount");
+    throw new Exception("Error in getting annual interest rate");
 }
 
 static int getNumberOfMonths()
@@ -93,5 +95,65 @@ static int getNumberOfMonths()
     }
 
     throw new Exception("Error in getting loan Amount");
+}
+
+static double getPriceOfVehicle()
+{
+    Console.WriteLine("What is the total price of your vehicle?");
+    var priceInput = Console.ReadLine();
+
+    // Now to convert into a number...
+    try
+    {
+        double.TryParse(priceInput, out double priceReturn);
+        priceReturn = Math.Round(priceReturn, 2);
+
+        // First check if its a valid input...
+        if (priceReturn <= 0)
+        {
+            Console.WriteLine("Please try again");
+            // Now lets try again...
+            getPriceOfVehicle();
+        }
+
+        return priceReturn;
+    }
+    catch
+    {
+        // Okay it failed here just try it again;
+        getPriceOfVehicle();
+    }
+
+    throw new Exception("Error in total price of car");
+}
+
+static double getDownPayment()
+{
+    Console.WriteLine("What is the toal down payment on the vehicle?");
+    var priceInput = Console.ReadLine();
+
+    // Now to convert into a number...
+    try
+    {
+        double.TryParse(priceInput, out double priceReturn);
+        priceReturn = Math.Round(priceReturn, 2);
+
+        // First check if its a valid input...
+        if (priceReturn <= 0)
+        {
+            Console.WriteLine("Please try again");
+            // Now lets try again...
+            getDownPayment();
+        }
+
+        return priceReturn;
+    }
+    catch
+    {
+        // Okay it failed here just try it again;
+        getDownPayment();
+    }
+
+    throw new Exception("Error in total price of car");
 }
 Console.ReadLine();
