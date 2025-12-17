@@ -3,22 +3,27 @@ using System.Collections.Concurrent;
 
 Console.WriteLine("----!WELCOME TO EVANS LOAN CALCULATOR!----");
 
-//var carPrice = getPriceOfVehicle();
-//var downPayment = getDownPayment();
-//var loanAmount = getLoanAmount();
-//var annualInterestRate = getAnnualInterestRate();
-//var numMonths = getNumberOfMonths();
+var carPrice = getPriceOfVehicle();
+var downPayment = getDownPayment();
+var principal = carPrice - downPayment;
 
-//Console.WriteLine($"Price of vehicle {carPrice}, Down Payment {downPayment}, Loan Amonut {loanAmount}, Annual Interest Rate {annualInterestRate}, Number of months {numMonths}");
+var loanAmount = getLoanAmount();
+var annualInterestRate = getAnnualInterestRate();
+var numMonths = getNumberOfMonths();
 
-var test = LoanFormulas.MonthlyPayment(18000, 5.3, 60);
-var testing = LoanFormulas.TotalInterestPaid(18000, 5.3, 60);
-var t = LoanFormulas.TotalPrincipalPaid(18000, 5.3, 60);
-var e = LoanFormulas.TotalPrincipalPlusInterest(18000, 5.3, 60);
-Console.WriteLine("Monthly Payment " + test);
-Console.WriteLine("Total Interest Paid " + testing);
-Console.WriteLine("Total Principal Paid " + t);
-Console.WriteLine("Total Principal Plus Interst Paid " + e);
+Console.WriteLine($"Monthly Payment: {Math.Round(LoanFormulas.MonthlyPayment(principal, annualInterestRate, numMonths), 2)}");
+Console.WriteLine($"Total Interest Paid {Math.Round(LoanFormulas.TotalPrincipalPaid(principal, annualInterestRate, numMonths), 2)}");
+Console.WriteLine($"Total Principal Paid {Math.Round(LoanFormulas.TotalPrincipalPaid(principal, annualInterestRate, numMonths), 2)}");
+Console.WriteLine($"Total Principal Plus Interest Paid {Math.Round(LoanFormulas.TotalPrincipalPlusInterest(principal, annualInterestRate, numMonths), 2)}");
+
+//var test = LoanFormulas.MonthlyPayment(18000, 5.3, 60);
+//var testing = LoanFormulas.TotalInterestPaid(18000, 5.3, 60);
+//var t = LoanFormulas.TotalPrincipalPaid(18000, 5.3, 60);
+//var e = LoanFormulas.TotalPrincipalPlusInterest(18000, 5.3, 60);
+//Console.WriteLine("Monthly Payment " + test);
+//Console.WriteLine("Total Interest Paid " + testing);
+//Console.WriteLine("Total Principal Paid " + t);
+//Console.WriteLine("Total Principal Plus Interst Paid " + e);
 
 static double getLoanAmount()
 {
