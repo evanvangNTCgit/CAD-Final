@@ -1,12 +1,24 @@
-﻿Console.WriteLine("----!WELCOME TO EVANS LOAN CALCULATOR!----");
+﻿using CAD_Final;
+using System.Collections.Concurrent;
 
-var carPrice = getPriceOfVehicle();
-var downPayment = getDownPayment();
-var loanAmount = getLoanAmount();
-var annualInterestRate = getAnnualInterestRate();
-var numMonths = getNumberOfMonths();
+Console.WriteLine("----!WELCOME TO EVANS LOAN CALCULATOR!----");
 
-Console.WriteLine($"Price of vehicle {carPrice}, Down Payment {downPayment}, Loan Amonut {loanAmount}, Annual Interest Rate {annualInterestRate}, Number of months {numMonths}");
+//var carPrice = getPriceOfVehicle();
+//var downPayment = getDownPayment();
+//var loanAmount = getLoanAmount();
+//var annualInterestRate = getAnnualInterestRate();
+//var numMonths = getNumberOfMonths();
+
+//Console.WriteLine($"Price of vehicle {carPrice}, Down Payment {downPayment}, Loan Amonut {loanAmount}, Annual Interest Rate {annualInterestRate}, Number of months {numMonths}");
+
+var test = LoanFormulas.MonthlyPayment(18000, 5.3, 60);
+var testing = LoanFormulas.TotalInterestPaid(18000, 5.3, 60);
+var t = LoanFormulas.TotalPrincipalPaid(18000, 5.3, 60);
+var e = LoanFormulas.TotalPrincipalPlusInterest(18000, 5.3, 60);
+Console.WriteLine("Monthly Payment " + test);
+Console.WriteLine("Total Interest Paid " + testing);
+Console.WriteLine("Total Principal Paid " + t);
+Console.WriteLine("Total Principal Plus Interst Paid " + e);
 
 static double getLoanAmount()
 {
